@@ -4,7 +4,7 @@ require 'openai'
 api_key = ENV["OPENAI_API_KEY"]
 
 # OpenAIのクライアントを初期化
-client = OpenAI::Client.new(api_key: api_key)
+client = OpenAI::Client.new(access_token: api_key)
 
 # GPT-3（またはGPT-4）でのテキスト生成リクエスト
 response = client.chat(
