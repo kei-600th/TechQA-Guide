@@ -26,7 +26,11 @@ jobs:
       # Diffを取得
       - name: Fetch PR diff
         run: |
-          curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -o pr.diff ${{ github.event.pull_request.diff_url }}
+          curl -v -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -o pr.diff ${{ github.event.pull_request.diff_url }}
+
+      - name: Check PR diff content
+        run: |
+          cat pr.diff
 
       - name: Execute openai-api.rb
         env:
