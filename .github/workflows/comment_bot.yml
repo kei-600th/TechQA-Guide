@@ -11,13 +11,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Execute fizzbuzz.rb
-        run: ruby fizzbuzz.rb > fizzbuzz_output
+      - name: Execute openai-api.rb
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: bundle exec ruby openai-api.rb > openai-api_output
 
       - name: Create comments
         run: |
-          echo "=== FizzBuzz Output ===" > comments
-          cat fizzbuzz_output >> comments
+          echo "=== OpenaiApi Output ===" > comments
+          cat openai-api_output >> comments
 
       - name: Post comments
         env:
