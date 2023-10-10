@@ -23,6 +23,11 @@ jobs:
           gem install bundler
           bundle install
 
+      # Diffを取得
+      - name: Fetch PR diff
+        run: |
+          curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -o pr.diff ${{ github.event.pull_request.diff_url }}
+
       - name: Execute openai-api.rb
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
