@@ -1,7 +1,5 @@
 require 'openai'
 
-OpenAI.api_key = ENV["OPENAI_API_KEY"]
-
 prompt = "こんにちは!"
 engine = "gpt-4"
 max_tokens = 100
