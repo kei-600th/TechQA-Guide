@@ -26,7 +26,7 @@ jobs:
       # Diffを取得
       - name: Fetch PR diff
         run: |
-          curl -v -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -o pr.diff ${{ github.event.pull_request.diff_url }}
+          curl -v -L -s -H "Authorization: token ***" -o pr.diff https://github.com/kei-600th/TechQA-Guide/pull/16.diff
 
       - name: Check PR diff content
         run: |
