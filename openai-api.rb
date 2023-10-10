@@ -1,13 +1,19 @@
 require 'openai'
 
-prompt = "こんにちは!"
-engine = "gpt-4"
-max_tokens = 100
+# APIキーは環境変数から取得（GitHub Actionsで設定）
+api_key = ENV["OPENAI_API_KEY"]
 
-response = OpenAI::Completion.create(
-  engine: engine,
-  prompt: prompt,
-  max_tokens: max_tokens
-)
+# OpenAIのクライアントを初期化
+client = OpenAI::Client.new(api_key: api_key)
 
-puts response.choices[0].text.strip
+# GPT-3（またはGPT-4）でのテキスト生成リクエスト
+response = client.chat(
+      parameters: {
+        model: "gpt-4",
+        messages: "こんにちは!",
+        temperature: 0.7
+      }
+    )
+
+# レスポンスからテキストを取得して出力
+puts response['choices'][0]['text'].strip
