@@ -11,6 +11,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      # RubyとBundlerのインストール
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+
+      # 依存関係のインストール
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+
       - name: Execute openai-api.rb
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
