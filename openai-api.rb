@@ -10,7 +10,7 @@ client = OpenAI::Client.new(access_token: api_key)
 response = client.chat(
       parameters: {
         model: "gpt-4",
-        messages: "こんにちは!",
+        messages: [{ role: "user", content: "こんにちは!"}],
         temperature: 0.7
       }
     )
