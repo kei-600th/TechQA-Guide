@@ -16,4 +16,4 @@ response = client.chat(
     )
 
 # レスポンスからテキストを取得して出力
-puts response['choices'][0]['text'].strip
+puts response.dig("choices", 0, "message", "content")
