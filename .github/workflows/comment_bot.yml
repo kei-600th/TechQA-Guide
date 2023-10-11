@@ -23,15 +23,24 @@ jobs:
           gem install bundler
           bundle install
 
+      # Diffを取得
+      - name: Fetch PR diff
+        run: |
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          REPO_NAME=${{ github.repository }}
+          curl -v -L -s -H "Authorization: token ${{ secrets.ASSISTANT_TOKEN }}" -o pr.diff "https://github.com/${REPO_NAME}/pull/${PR_NUMBER}.diff"
+
+      - name: Check PR diff content
+        run: |
+          cat pr.diff
+
       - name: Execute openai-api.rb
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: bundle exec ruby openai-api.rb > openai-api_output
 
       - name: Create comments
-        run: |
-          echo "=== OpenaiApi Output ===" > comments
-          cat openai-api_output >> comments
+        run: cat openai-api_output >> comments
 
       - name: Post comments
         env:
