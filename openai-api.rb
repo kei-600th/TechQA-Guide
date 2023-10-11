@@ -13,7 +13,7 @@ diff_text = File.read("pr.diff")
 response = client.chat(
       parameters: {
         model: "gpt-4",
-        messages: [{ role: "user", content: "以下の修正箇所についてコメントしてください。\n" + diff_text }],
+        messages: [{ role: "user", content: "私は未経験からエンジニア転職を目指してプログラミング学習をしています。以下は自分のプログラミング学習に対するアウトプットです。これに対して良い点と改善点を挙げてフィードバックをしてください。\n" + diff_text }],
         temperature: 0.7
       }
     )
