@@ -6,14 +6,20 @@ api_key = ENV["OPENAI_API_KEY"]
 # OpenAIのクライアントを初期化
 client = OpenAI::Client.new(access_token: api_key)
 
+# current_prompt.txtからプロンプトを読み込む
+current_prompt = File.read("current_prompt.txt")
+
 # Diff内容を読み込み
 diff_text = File.read("pr.diff")
+
+# プロンプトにDiff内容を追加
+current_prompt.sub!('[アウトプット]', diff_text)
 
 # GPT-3（またはGPT-4）でのテキスト生成リクエスト
 response = client.chat(
       parameters: {
         model: "gpt-4",
-        messages: [{ role: "user", content: "私は未経験からエンジニア転職を目指してプログラミング学習をしています。以下は自分のプログラミング学習に対するアウトプットです。これに対して良い点と改善点を挙げてフィードバックをしてください。\n" + diff_text }],
+        messages: [{ role: "user", content: current_prompt }],
         temperature: 0.7
       }
     )
