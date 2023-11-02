@@ -6,6 +6,8 @@ https://sqlab.net/
 
 ### (ここに問題文を貼り付ける)
 
+※ DB: PostgreSQL ver14.4
+
 # SQL
 
 ```sql
