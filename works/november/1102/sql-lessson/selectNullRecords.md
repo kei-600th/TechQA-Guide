@@ -1,6 +1,16 @@
+# 学習元サイト(SpecialThanks)
+
+https://sqlab.net/
+
+# 問題文
+
+### 出版年(release_year)が不明の書籍一覧を取得してください。
+
+# SQL
+
 ```sql
 
-SELECT * FROM books WHERE release_year IS NULL OR release_year = '';
+SELECT * FROM books WHERE release_year IS NULL;
 
 ```
 
