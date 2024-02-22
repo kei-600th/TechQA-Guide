@@ -1,0 +1,15 @@
+# Rubyの公式イメージをベースとして使用
+FROM ruby:3.3
+
+# 作業ディレクトリを設定
+WORKDIR /usr/src/app
+
+# 必要なファイルをコンテナにコピー
+COPY CheatingRPS.rb ./CheatingRPS.rb
+COPY CheatingRPS_test.rb ./CheatingRPS_test.rb
+
+# RSpecをインストール
+RUN gem install rspec
+
+# コンテナ起動時にRSpecテストを実行
+CMD ["rspec", "CheatingRPS_test.rb"]
