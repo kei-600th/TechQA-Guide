@@ -5,11 +5,11 @@ FROM ruby:3.3
 WORKDIR /usr/src/app
 
 # 必要なファイルをコンテナにコピー
-COPY CheatingRPS.rb ./CheatingRPS.rb
-COPY CheatingRPS_test.rb ./CheatingRPS_test.rb
+COPY CheatingJanken.rb ./CheatingJanken.rb
+COPY CheatingJanken_test.rb ./CheatingJanken_test.rb
 
 # RSpecをインストール
 RUN gem install rspec
 
 # コンテナ起動時にRSpecテストを実行
-CMD ["rspec", "CheatingRPS_test.rb"]
+CMD ["rspec", "CheatingJanken_test.rb"]

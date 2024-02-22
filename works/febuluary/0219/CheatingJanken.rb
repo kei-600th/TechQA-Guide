@@ -1,7 +1,7 @@
 HAND = ["グー", "チョキ", "パー"]
 
 # ユーザーの入力に応じてじゃんけんの手を決める
-def CheatingRPS(users_input)
+def CheatingJanken(users_input)
   unless HAND.include?(users_input)
     puts "グー、チョキ、パーのいずれかを入力してください。"
     return
@@ -47,4 +47,4 @@ end
 
 puts "グー、チョキ、パーのいずれかを入力してください："
 users_input = gets.chomp
-CheatingRPS(users_input)
+CheatingJanken(users_input)
